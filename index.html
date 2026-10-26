@@ -9,33 +9,52 @@
 </head>
 <body>
 
+    <a class="skip-link" href="#main">Перейти к основному содержанию</a>
+
     <!-- ШАПКА -->
     <header>
-        <button id="theme-toggle" title="Сменить тему">🌙</button>
-        <nav>
+        <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Тёмная тема"
+            aria-pressed="false"
+            title="Переключить тёмную тему">
+            <span id="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+
+        <button
+            id="read-aloud"
+            type="button"
+            aria-label="Прочитать сайт вслух"
+            title="Прочитать сайт вслух">
+            <span aria-hidden="true">🔊</span> <span>Прочитать</span>
+        </button>
+
+        <nav aria-label="Основная навигация">
             <a href="#about">Обо мне</a>
             <a href="#skills">Навыки</a>
             <a href="#projects">Проекты</a>
             <a href="#contacts">Контакты</a>
         </nav>
+
         <h1>Жамбалова Саяна</h1>
-        <p>Начинающий программист </p>
+        <p>Начинающий программист</p>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
         <!-- ОБО МНЕ -->
-        <section id="about">
-            <img src="saya.jpg" alt="Фото" width="160" height="160">
+        <section id="about" aria-labelledby="about-title">
+            <img src="saya.jpg" alt="Жамбалова Саяна" width="160" height="160">
             <div>
-                <h2>Обо мне</h2>
-                <p>Привет! Я изучаю<strong> программирование</strong> и создаю сайты
+                <h2 id="about-title">Обо мне</h2>
+                <p>Привет! Я изучаю <strong>программирование</strong> и создаю сайты
                    на <em>HTML, CSS и JavaScript</em>. Это мой проект, собранный с нуля.</p>
             </div>
         </section>
 
         <!-- НАВЫКИ -->
-        <section id="skills">
-            <h2>Навыки</h2>
+        <section id="skills" aria-labelledby="skills-title">
+            <h2 id="skills-title">Навыки</h2>
             <ul>
                 <li>HTML5 — семантическая вёрстка</li>
                 <li>CSS3 — flexbox, grid, адаптивность, тёмная тема</li>
@@ -45,53 +64,82 @@
         </section>
 
         <!-- ПРОЕКТЫ -->
-        <section id="projects">
-            <h2>Мои проекты</h2>
-            <article>
-                <h3>☕ Сайт кофейни</h3>
+        <section id="projects" aria-labelledby="projects-title">
+            <h2 id="projects-title">Мои проекты</h2>
+
+            <article aria-labelledby="project-1-title">
+                <h3 id="project-1-title">☕ Сайт кофейни</h3>
                 <p>Лендинг с меню, фотогалереей и формой бронирования столика.</p>
-                <a href="#">Смотреть проект →</a>
+                <a href="#" aria-label="Смотреть проект: Сайт кофейни">
+                    Смотреть проект <span aria-hidden="true">→</span>
+                </a>
             </article>
-            <article>
-                <h3>✈️ Блог о путешествиях</h3>
+
+            <article aria-labelledby="project-2-title">
+                <h3 id="project-2-title">✈️ Блог о путешествиях</h3>
                 <p>Многостраничный сайт с картой поездок и галереей фотографий.</p>
-                <a href="#">Смотреть проект →</a>
+                <a href="#" aria-label="Смотреть проект: Блог о путешествиях">
+                    Смотреть проект <span aria-hidden="true">→</span>
+                </a>
             </article>
-            <article>
-                <h3>📚 Список книг</h3>
+
+            <article aria-labelledby="project-3-title">
+                <h3 id="project-3-title">📚 Список книг</h3>
                 <p>Интерактивный список прочитанного с поиском и фильтрами.</p>
-                <a href="#">Смотреть проект →</a>
+                <a href="#" aria-label="Смотреть проект: Список книг">
+                    Смотреть проект <span aria-hidden="true">→</span>
+                </a>
             </article>
         </section>
 
         <!-- КОНТАКТЫ -->
-        <section id="contacts">
-            <h2>Связаться со мной</h2>
-            <form action="#" method="POST">
+        <section id="contacts" aria-labelledby="contacts-title">
+            <h2 id="contacts-title">Связаться со мной</h2>
+
+            <form action="#" method="POST" aria-labelledby="contacts-title">
                 <label for="name">Имя</label>
-                <input type="text" id="name" name="name" placeholder="Как вас зовут?" required>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Как вас зовут?"
+                    autocomplete="name"
+                    required>
 
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="you@mail.ru" required>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@mail.ru"
+                    autocomplete="email"
+                    required>
 
                 <label for="msg">Сообщение</label>
-                <textarea id="msg" name="message" rows="4" placeholder="Ваше сообщение..." required></textarea>
+                <textarea
+                    id="msg"
+                    name="message"
+                    rows="4"
+                    placeholder="Ваше сообщение..."
+                    required></textarea>
 
                 <button type="submit">Отправить</button>
             </form>
-            <p id="form-status" role="status"></p>
+
+            <p id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
         </section>
     </main>
 
     <!-- ПОДВАЛ -->
     <footer>
-        <p>© <span id="year">2026</span> Иван Иванов. Проект на HTML + CSS + JS.</p>
+        <p>© <span id="year">2026</span> Жамбалова Саяна. Проект на HTML + CSS + JS.</p>
     </footer>
 
     <!-- КНОПКА «НАВЕРХ» -->
-    <button id="to-top" title="Наверх">↑</button>
+    <button id="to-top" type="button" aria-label="Наверх" title="Наверх">
+        <span aria-hidden="true">↑</span>
+    </button>
 
-    <!-- JAVASCRIPT (defer = выполнится после загрузки HTML) -->
     <script src="js/script.js" defer></script>
 </body>
 </html>
